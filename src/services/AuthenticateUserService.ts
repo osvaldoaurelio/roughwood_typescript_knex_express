@@ -5,6 +5,7 @@ import AppError from '../errors/AppError';
 import authConfig from '../config/auth';
 import User from '../models/User';
 import UsersRepository from '../repositories/UsersRepository';
+import IUsersRepository from '../repositories/IUsersRepository';
 
 interface Request {
   username: string;
@@ -17,9 +18,9 @@ interface Response {
 }
 
 class AuthenticateUserService {
-  usersRepository: any;
+  usersRepository: UsersRepository;
 
-  constructor(usersRepository: any) {
+  constructor({ usersRepository }: any) {
     this.usersRepository = usersRepository;
   }
 

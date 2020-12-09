@@ -25,7 +25,7 @@ export default class UsersRepository implements IUsersRepository {
     password,
     actived = false,
     is_admin = false,
-  }: User): Promise<User> {
+  }: any): Promise<User> {
     const [user] = await knex('users').insert({
       name,
       username,

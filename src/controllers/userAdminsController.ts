@@ -24,7 +24,7 @@ class UserAdminsController {
   // }
 
   public async store(request: Request, response: Response): Promise<Response> {
-    const { name, username, password } = request.body.user as User;
+    const { name, username, password } = request.body.user;
 
     const createUserAdmin = new CreateUserAdminService();
     const user = await createUserAdmin.execute({ name, username, password });

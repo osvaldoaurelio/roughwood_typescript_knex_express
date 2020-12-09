@@ -11,7 +11,15 @@ class CreateUserAdminService {
     this.usersRepository = new UsersRepository();
   }
 
-  public async execute({ name, username, password }: User): Promise<User> {
+  public async execute({
+    name,
+    username,
+    password,
+  }: {
+    name: string;
+    username: string;
+    password: string;
+  }): Promise<User> {
     const checkIfUserNameExist = await this.usersRepository.findOne({
       username,
     });
