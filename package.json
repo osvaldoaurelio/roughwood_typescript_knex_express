@@ -1,0 +1,49 @@
+{
+  "name": "roughwood-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "dev": "ts-node-dev --transpile-only --ignore-watch node_modules src/server.ts",
+    "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js",
+    "knex:seed:make": "knex --cwd src/database seed:make",
+    "knex:seed:run": "knex --cwd src/database seed:run",
+    "knex:migrate:make": "knex --cwd src/database migrate:make",
+    "knex:migrate:latest": "knex --cwd src/database migrate:latest",
+    "knex:migrate:rollback": "knex --cwd src/database migrate:rollback"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-async-errors": "^3.1.1",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^0.21.12",
+    "mysql2": "^2.2.5",
+    "ts-node": "^9.1.0"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.2",
+    "@types/cors": "^2.8.8",
+    "@types/express": "^4.17.8",
+    "@types/jest": "^26.0.14",
+    "@types/jsonwebtoken": "^8.5.0",
+    "@types/knex": "^0.16.1",
+    "@types/validator": "^13.1.1",
+    "@typescript-eslint/eslint-plugin": "^4.4.1",
+    "@typescript-eslint/parser": "^4.4.1",
+    "eslint": "^7.11.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-config-prettier": "^6.12.0",
+    "eslint-import-resolver-typescript": "^2.3.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-prettier": "^3.1.4",
+    "jest": "^26.5.3",
+    "prettier": "^2.1.2",
+    "ts-jest": "^26.4.1",
+    "ts-node-dev": "^1.0.0-pre.65",
+    "typescript": "^4.0.3"
+  }
+}
