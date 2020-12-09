@@ -3,11 +3,12 @@ import { Request as Req, Response as Res } from 'express';
 import usersSerializer from '../serializers/usersSerializer';
 import AuthenticateAdminService from '../services/AuthenticateAdminService';
 import AuthenticateUserService from '../services/AuthenticateUserService';
+import { UserServiceFactory } from '../services/factory';
 
 class SessionsController {
   public async createUser(req: Req, res: Res): Promise<Res> {
     const { username, password } = req.body.session;
-    const authenticateUser = new AuthenticateUserService();
+    const authenticateUser = UserServiceFactory.AuthenticationUserService();
     const { user, token } = await authenticateUser.execute({
       username,
       password,

@@ -1,12 +1,13 @@
 import knex from '../database';
 import User from '../models/User';
+import IUsersRepository from './IUsersRepository';
 
 interface Query {
   id?: number | undefined;
   username?: string;
 }
 
-export default class UsersRepository {
+export default class UsersRepository implements IUsersRepository {
   public async find(): Promise<User[]> {
     const users = await knex('users').where({ is_admin: false });
     return users;

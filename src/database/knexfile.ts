@@ -5,24 +5,32 @@ dotenv.config();
 register();
 
 const knexfile = {
-  client: 'mysql2',
-  connection: {
-    port: 3306,
-    host: 'localhost',
-    database: 'roughwood_db',
-    user: 'root',
-    password: 'root',
+  development: {
+    client: 'sqlite',
+    connection: {
+      filename: `${__dirname}/db.sqlite`,
+    },
   },
-  pool: {
-    min: 2,
-    max: 10,
-  },
-  migrations: {
-    directory: `${__dirname}/migrations`,
-    tableName: 'knex_migrations',
-  },
-  seeds: {
-    directory: `${__dirname}/seeds`,
+  production: {
+    client: 'mysql2',
+    connection: {
+      port: 3306,
+      host: 'localhost',
+      database: 'roughwood_db',
+      user: 'root',
+      password: 'root',
+    },
+    pool: {
+      min: 2,
+      max: 10,
+    },
+    migrations: {
+      directory: `${__dirname}/migrations`,
+      tableName: 'knex_migrations',
+    },
+    seeds: {
+      directory: `${__dirname}/seeds`,
+    },
   },
 };
 

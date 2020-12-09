@@ -15,18 +15,15 @@ interface Response {
   user: User;
   token: string;
 }
-interface Service {
-  usersRepository: UsersRepository;
-}
 
-class AuthenticateUserService implements Service {
-  usersRepository: UsersRepository;
+class AuthenticateUserService {
+  usersRepository: any;
 
-  constructor() {
-    this.usersRepository = new UsersRepository();
+  constructor(usersRepository: any) {
+    this.usersRepository = usersRepository;
   }
 
-  execute = async ({ username, password }: Request): Promise<Response> => {
+  public async execute({ username, password }: Request): Promise<Response> {
     const user = await this.usersRepository.findOne({ username });
     if (!user) {
       throw new AppError('Username/Senha digitados estão incorretos!', 401);
@@ -47,7 +44,7 @@ class AuthenticateUserService implements Service {
       user,
       token,
     };
-  };
+  }
 }
 
 export default AuthenticateUserService;
